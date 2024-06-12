@@ -5,12 +5,15 @@ CREATE TABLE funcionarios (
 
 )
 
+DROP TABLE funcionarios CASCADE
+
 CREATE TABLE projetos (
 	id_projetos SERIAL PRIMARY KEY,
 	nome_projeto varchar(150),
 	descricao text
-
 )
+
+DROP TABLE projetos CASCADE
 
 CREATE TABLE func_proj (
 	id_func int,
@@ -19,30 +22,32 @@ CREATE TABLE func_proj (
 	CONSTRAINT fk_projetos FOREIGN KEY (id_projetos) REFERENCES projetos (id_projetos)
 )
 
+DROP TABLE func_proj CASCADE 
+
 INSERT INTO funcionarios (id_func, nome_func, data_adm) VALUES
-(1, 'Ana', '2019-08-20'),
-(2, 'Bernardo', '2016-10-18'),
-(3, 'Carlos', '2018-02-17'),
-(4, 'Diego', '2021-05-16'),
-(5, 'Everaldo', '2015-02-03'),
-(6, 'Fernanda', '2018-11-12'),
-(7, 'Gabriel', '2013-12-02'),
-(8, 'Helen', '2020-09-12'),
-(9, 'Iago', '2017-11-17'),
-(10, 'Julio', '2019-08-06');
+(1, 'Julia Gubany', '2019-08-20'),
+(2, 'João Gabriel', '2016-10-25'),
+(3, 'Matheus Barbosa', '2018-02-05'),
+(4, 'Valentina Leite', '2021-05-15'),
+(5, 'João Pedro', '2015-02-10'),
+(6, 'Pedro Andreoli', '2018-11-25'),
+(7, 'Lindsey Cardoso', '2013-12-01'),
+(8, 'Carolina Lisboa', '2020-09-19'),
+(9, 'Luan Santana', '2017-11-29'),
+(10, 'Julia Torres', '2019-08-27');
 
-INSERT INTO projetos (id_projetos, nome_projeto, descricao) VALUES
+INSERT INTO Projetos (id_projetos, nome_projeto, descricao) VALUES
 
-(1, 'SecureNet', ' Desenvolvimento de um sistema de segurança de rede abrangente, incluindo firewall, detecção de intrusão e prevenção de ameaças, para proteger a infraestrutura de TI contra ataques cibernéticos.'),
-(2, 'DataGuard', 'Implementação de um sistema de backup e recuperação de dados automatizado e altamente confiável, garantindo a integridade e disponibilidade dos dados críticos da empresa em caso de falhas ou desastres.'),
-(3, 'CloudScape', 'Migração da infraestrutura local para uma arquitetura de nuvem híbrida, aproveitando os benefícios da escalabilidade, flexibilidade e redundância oferecidos pela computação em nuvem.'),
-(4, 'SmartOffice', 'Implementação de uma solução de Internet das Coisas (IoT) para otimizar o uso de recursos em escritórios, incluindo controle de iluminação, gerenciamento de energia e monitoramento de ocupação de salas.'),
-(5, 'AgileDevOps', 'Adoção de práticas ágeis e metodologias DevOps para melhorar a colaboração entre equipes de desenvolvimento e operações, acelerando o ciclo de desenvolvimento de software e aumentando a qualidade das entregas.'),
-(6, 'Virtualize', 'Virtualização de servidores e desktops para consolidar recursos de hardware, reduzir custos operacionais e simplificar a administração de sistemas em ambientes de TI.'),
-(7, 'MobileFirst', ' Desenvolvimento de uma estratégia centrada em dispositivos móveis para oferecer aos clientes uma experiência otimizada em plataformas móveis, incluindo aplicativos nativos e sites responsivos.'),
-(8, 'AI-Driven Insights', 'Implementação de soluções baseadas em inteligência artificial e análise de dados para extrair insights valiosos a partir de grandes conjuntos de dados, impulsionando a tomada de decisões informadas na empresa.'),
-(9, 'NetworkOptimize', 'Avaliação e otimização da infraestrutura de rede existente para melhorar a largura de banda, a confiabilidade e o desempenho, garantindo uma conectividade estável e rápida para todos os usuários e sistemas.'),
-(10, 'CyberAwareness Training', 'Desenvolvimento e implementação de programas de treinamento em segurança cibernética para conscientizar os funcionários sobre práticas seguras de uso da tecnologia, reduzindo o risco de violações de segurança causadas por erros humanos.');
+(1, 'Sistema de Gestão Escolar', 'Desenvolvimento de um sistema para gerenciar escolas, incluindo matrícula, turmas e notas.'),
+(2, 'Aplicativo de Saúde', 'Criação de um aplicativo para monitoramento de saúde e fitness com integração a dispositivos wearables.'),
+(3, 'Plataforma de E-commerce', 'Desenvolvimento de uma plataforma de e-commerce completa com suporte a múltiplos vendedores.'),
+(4, 'Site de Rede Social', 'Construção de uma rede social com recursos de postagem, comentário e mensagem privada.'),
+(5, 'Sistema de Reserva de Hotéis', 'Desenvolvimento de um sistema online para reservas de hotéis e resorts.'),
+(6, 'Aplicativo de Entrega de Comida', 'Criação de um aplicativo para pedidos e entregas de comida de restaurantes locais.'),
+(7, 'Ferramenta de Análise de Dados', 'Desenvolvimento de uma ferramenta para análise e visualização de grandes volumes de dados.'),
+(8, 'Sistema de Atendimento ao Cliente', 'Construção de um sistema de gerenciamento de atendimento ao cliente com suporte a chat e tickets.'),
+(9, 'Portal de Educação Online', 'Desenvolvimento de um portal para cursos online com vídeos, quizzes e certificações.'),
+(10, 'Aplicativo de Gestão Financeira', 'Criação de um aplicativo para gerenciamento de finanças pessoais e planejamento de orçamento.');
 
 INSERT INTO func_proj (id_func, id_projetos) VALUES
 (1, 10),
@@ -63,8 +68,8 @@ SELECT * FROM projetos
 SELECT funcionarios.nome_func, projetos.nome_projeto
 FROM (projetos NATURAL INNER JOIN funcionarios_projetos)
 INNER JOIN funcionarios USING (id_func)
-WHERE projetos.nome_projeto = 'aapm'	
-	id_projeto int,
+WHERE projetos.nome_projeto = 'aapm'
+	id_projetos int,
 	CONSTRAIN fk_proj FOREIGN KEY (i) REFERENCES projetos (id_projetos)
 )
 

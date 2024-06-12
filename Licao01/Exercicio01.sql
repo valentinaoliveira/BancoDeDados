@@ -70,6 +70,10 @@ ON livros.isbn = autores.id_autor
 
 --Exercicio02
 
+SELECT titulo, nome_autor
+FROM livros INNER JOIN autores 
+ON nome_autor = titulo
+
 
 
 
